@@ -155,10 +155,15 @@ namespace CodeFirst.GUI
             this.btnSort.TabIndex = 8;
             this.btnSort.Text = "Sort";
             this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
             // cbbSort
             // 
             this.cbbSort.FormattingEnabled = true;
+            this.cbbSort.Items.AddRange(new object[] {
+            "Ten nguyen lieu",
+            "So luong",
+            "Don vi tinh"});
             this.cbbSort.Location = new System.Drawing.Point(640, 436);
             this.cbbSort.Margin = new System.Windows.Forms.Padding(4);
             this.cbbSort.Name = "cbbSort";

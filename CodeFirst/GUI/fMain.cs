@@ -80,5 +80,20 @@ namespace CodeFirst.GUI
             }
         }
 
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            if(this.cbbSort.SelectedIndex >= 0)
+            {
+                this.dataGridView1.Rows.Clear();
+                string txtSort = this.cbbSort.Text;
+                int MaMonAn = ((CBBItem)this.cbbMonAn.SelectedItem).Key;
+                string txtSearch = this.txtSearch.Text;
+                foreach (MA_NL i in BLL_QL.Instance.Sort(txtSort, MaMonAn, txtSearch))
+                {
+                    this.dataGridView1.Rows.Add(i.TenNguyenLieu, i.SoLuong, i.DonViTinh, i.TinhTrang);
+                }
+            }
+
+        }
     }
 }

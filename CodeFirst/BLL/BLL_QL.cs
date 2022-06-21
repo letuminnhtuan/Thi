@@ -129,5 +129,22 @@ namespace CodeFirst.BLL
             db._MA_NLs.Remove(i);
             db.SaveChanges();
         }
+        public List<MA_NL> Sort(string txtSort, int MaMonAn, string txtSearch)
+        {
+            List<MA_NL> temp = GetDSNguyenLieu(MaMonAn, txtSearch);
+            if (txtSort.Equals("So luong"))
+            {
+                temp.Sort(delegate (MA_NL data1, MA_NL data2) { return data1.SoLuong.CompareTo(data2.SoLuong); });
+            }
+            else if(txtSort.Equals("Ten nguyen lieu"))
+            {
+                temp.Sort(delegate (MA_NL data1, MA_NL data2) { return data1.TenNguyenLieu.CompareTo(data2.TenNguyenLieu); });
+            }
+            else if(txtSort.Equals("Don vi tinh"))
+            {
+                temp.Sort(delegate (MA_NL data1, MA_NL data2) { return data1.DonViTinh.CompareTo(data2.DonViTinh); });
+            }
+            return temp;
+        }
     }
 }
