@@ -54,6 +54,7 @@ namespace CodeFirst.GUI
             this.cbbMonAn.Name = "cbbMonAn";
             this.cbbMonAn.Size = new System.Drawing.Size(160, 24);
             this.cbbMonAn.TabIndex = 0;
+            this.cbbMonAn.SelectedIndexChanged += new System.EventHandler(this.cbbMonAn_SelectedIndexChanged);
             // 
             // label1
             // 

@@ -11,11 +11,10 @@ namespace CodeFirst.DAL
     [Table("MonAn_NguyenLieu")]
     public class tMA_NL
     {
-        [Key]
-        public string ID { get; set; }
+        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
         public int SoLuong { get; set; }
         public string DonViTinh { get; set; }
-        public bool TrangThai { get; set; }
         public int ID_MonAn { get; set; }
         public int ID_NguyenLieu { get; set; }
 

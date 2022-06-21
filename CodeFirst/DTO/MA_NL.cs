@@ -8,7 +8,7 @@ namespace CodeFirst.DTO
 {
     public class MA_NL
     {
-        public string Ma { get; set; }
+        public int Ma { get; set; }
         public int SoLuong { get; set; }
         public string DonViTinh { get; set; }
         public bool TinhTrang { get; set; }

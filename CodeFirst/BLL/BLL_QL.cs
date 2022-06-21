@@ -57,7 +57,7 @@ namespace CodeFirst.BLL
         {
             var list = db._MA_NLs.Select(p => p).Where(p => p.MonAn.ID_MonAn == ID_MonAn);
             List<MA_NL> data = new List<MA_NL>();
-            if (txtSearch.Equals(""))
+            if (!txtSearch.Equals(""))
             {
                 list = list.Where(p => p.NguyenLieu.Ten_NguyenLieu.Contains(txtSearch) || p.DonViTinh.Contains(txtSearch));
             }
@@ -100,15 +100,15 @@ namespace CodeFirst.BLL
             if (GetNguyenLieuByMonAn(data.MaMonAn, data.MaNguyenLieu) == null) AddNL(data);
             else UpdateNL(data);
         }
-        public void AddNL(MA_NL data)
+        public void UpdateNL(MA_NL data)
         {
             var i = db._MonAns.Find(data.MaMonAn).MA_NLs.Select(p => p).Where(p => p.ID_NguyenLieu == data.MaNguyenLieu).FirstOrDefault();
             i.SoLuong = data.SoLuong;
             i.DonViTinh = data.DonViTinh;
-            i.TrangThai = data.TinhTrang;
+            i.NguyenLieu.TT_NguyenLieu = data.TinhTrang;
             db.SaveChanges();
         }
-        public void UpdateNL(MA_NL data)
+        public void AddNL(MA_NL data)
         {
             tMA_NL i = new tMA_NL
             {
@@ -117,8 +117,9 @@ namespace CodeFirst.BLL
                 ID_NguyenLieu = data.MaNguyenLieu,
                 DonViTinh = data.DonViTinh,
                 SoLuong = data.SoLuong,
-                TrangThai = data.TinhTrang,
             };
+            var j = db._NguyenLieus.Find(data.MaNguyenLieu);
+            j.TT_NguyenLieu = data.TinhTrang;
             db._MA_NLs.Add(i);
             db.SaveChanges();
         }

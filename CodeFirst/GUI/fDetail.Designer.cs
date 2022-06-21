@@ -45,7 +45,7 @@ namespace CodeFirst.GUI
             // 
             this.cbbTenNguyenLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbTenNguyenLieu.FormattingEnabled = true;
-            this.cbbTenNguyenLieu.Location = new System.Drawing.Point(184, 33);
+            this.cbbTenNguyenLieu.Location = new System.Drawing.Point(200, 33);
             this.cbbTenNguyenLieu.Name = "cbbTenNguyenLieu";
             this.cbbTenNguyenLieu.Size = new System.Drawing.Size(205, 28);
             this.cbbTenNguyenLieu.TabIndex = 0;
@@ -53,7 +53,7 @@ namespace CodeFirst.GUI
             // txtSoLuong
             // 
             this.txtSoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoLuong.Location = new System.Drawing.Point(184, 98);
+            this.txtSoLuong.Location = new System.Drawing.Point(200, 98);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(205, 26);
             this.txtSoLuong.TabIndex = 1;
@@ -62,7 +62,11 @@ namespace CodeFirst.GUI
             // 
             this.cbbDonViTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbDonViTinh.FormattingEnabled = true;
-            this.cbbDonViTinh.Location = new System.Drawing.Point(184, 180);
+            this.cbbDonViTinh.Items.AddRange(new object[] {
+            "gam",
+            "qua",
+            "lit"});
+            this.cbbDonViTinh.Location = new System.Drawing.Point(200, 180);
             this.cbbDonViTinh.Name = "cbbDonViTinh";
             this.cbbDonViTinh.Size = new System.Drawing.Size(205, 28);
             this.cbbDonViTinh.TabIndex = 2;
@@ -71,7 +75,7 @@ namespace CodeFirst.GUI
             // 
             this.cbbTinhTrang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbTinhTrang.FormattingEnabled = true;
-            this.cbbTinhTrang.Location = new System.Drawing.Point(184, 277);
+            this.cbbTinhTrang.Location = new System.Drawing.Point(200, 277);
             this.cbbTinhTrang.Name = "cbbTinhTrang";
             this.cbbTinhTrang.Size = new System.Drawing.Size(205, 28);
             this.cbbTinhTrang.TabIndex = 3;
@@ -125,6 +129,7 @@ namespace CodeFirst.GUI
             this.btnOK.TabIndex = 8;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancle
             // 

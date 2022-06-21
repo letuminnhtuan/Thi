@@ -37,10 +37,15 @@ namespace CodeFirst.GUI
         {
             LoadData();
         }
+        private void cbbMonAn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             int MaMonAn = ((CBBItem)this.cbbMonAn.SelectedItem).Key;
             fDetail f = new fDetail(MaMonAn, "");
+            f.d = new fDetail.Del(LoadData);
             f.Show();
         }
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -50,12 +55,30 @@ namespace CodeFirst.GUI
                 int MaMonAn = ((CBBItem)this.cbbMonAn.SelectedItem).Key;
                 string TenNguyenLieu = this.dataGridView1.SelectedRows[0].Cells["colTenNguyenLieu"].Value.ToString();
                 fDetail f = new fDetail(MaMonAn, TenNguyenLieu);
+                f.d = new fDetail.Del(LoadData);
                 f.Show();
             }
         }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if (this.dataGridView1.SelectedRows.Count == 1)
+            {
+                int MaMonAn = ((CBBItem)this.cbbMonAn.SelectedItem).Key;
+                string TenNguyenLieu = this.dataGridView1.SelectedRows[0].Cells["colTenNguyenLieu"].Value.ToString();
+                int MaNguyenLieu = 0;
+                foreach(CBBItem i in BLL_QL.Instance.GetCBBNguyenLieu())
+                {
+                    if (i.Value.Equals(TenNguyenLieu))
+                    {
+                        MaNguyenLieu = i.Key;
+                        break;
+                    }
+                }
+                BLL_QL.Instance.DeleteNL(MaMonAn, MaNguyenLieu);
+                LoadData();
+            }
         }
+
     }
 }
