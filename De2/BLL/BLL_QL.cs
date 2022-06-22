@@ -49,9 +49,59 @@ namespace De2.BLL
             }
             return data;
         }
-        public void GetDSSP(string MaTP, string MaNCC, string txtSearch)
+        public List<SanPham> GetDSSP(string MaTP, int MaNCC, string txtSearch)
         {
-
+            var list = db.SanPhams.Select(p => p);
+            if (!MaTP.Equals("All")) list = list.Where(p => p.NhaCungCap.MaTinh.Equals(MaTP));
+            if (MaNCC > 0) list = list.Where(p => p.MaNhaCungCap == MaNCC);
+            if (!txtSearch.Equals("")) list = list.Where(p => p.TenSanPham.Contains(txtSearch));
+            List<SanPham> data = new List<SanPham>();
+            foreach(tSanPham i in list)
+            {
+                data.Add(new SanPham
+                {
+                    MaSanPham = i.MaSanPham,
+                    GiaNhap = i.GiaNhap,
+                    NgayNhapHang = i.NgayNhapSanPham,
+                    MaNCC = i.MaNhaCungCap,
+                    SoLuong = i.SoLuong,
+                    TenSanPham = i.TenSanPham,
+                    MaThanhPho = i.NhaCungCap.MaTinh,
+                });
+            }
+            return data;
+        }
+        public string GetTenTPByMaTP(string MaThanhPho)
+        {
+            return db.DiaChis.Find(MaThanhPho).TenTinh;
+        }
+        public string GetNCCByMaNCC(int MaNCC)
+        {
+            return db.NhaCungCaps.Find(MaNCC).TenNhaCungCap;
+        }
+        public SanPham GetSanPham(int MaNCC, string MaSanPham)
+        {
+            var i = db.SanPhams.Select(p => p).Where(p => p.MaNhaCungCap == MaNCC && p.MaSanPham.Equals(MaSanPham)).FirstOrDefault();
+            SanPham data = null;
+            if(i != null)
+            {
+                data = new SanPham
+                {
+                    MaSanPham = i.MaSanPham,
+                    GiaNhap = i.GiaNhap,
+                    SoLuong = i.SoLuong,
+                    MaNCC = i.MaNhaCungCap,
+                    TenSanPham = i.TenSanPham,
+                    NgayNhapHang = i.NgayNhapSanPham,
+                    MaThanhPho = i.NhaCungCap.MaTinh,
+                };
+            }
+            return data;
+        }
+        public void AddUpdateSP(SanPham data)
+        {
+            if (GetSanPham(data.MaNCC, data.MaSanPham) == null) AddSP(data);
+            else UpdateSP(data);
         }
         public void AddSP(SanPham data)
         {
@@ -67,9 +117,15 @@ namespace De2.BLL
             db.SanPhams.Add(i);
             db.SaveChanges();
         }
-        public void UpdateSP()
+        public void UpdateSP(SanPham data)
         {
-
+            var i = db.SanPhams.Find(data.MaSanPham);
+            i.TenSanPham = data.TenSanPham;
+            i.GiaNhap = data.GiaNhap;
+            i.SoLuong = data.SoLuong;
+            i.NgayNhapSanPham = data.NgayNhapHang;
+            i.MaNhaCungCap = data.MaNCC;
+            db.SaveChanges();
         }
     }
 }

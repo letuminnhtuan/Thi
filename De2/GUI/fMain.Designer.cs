@@ -33,13 +33,6 @@ namespace De2.GUI
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGiaNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTinhTrang = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -48,6 +41,12 @@ namespace De2.GUI
             this.cbbSort = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbbNhaCungCap = new System.Windows.Forms.ComboBox();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGiaNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +76,7 @@ namespace De2.GUI
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(103, 20);
             this.txtSearch.TabIndex = 2;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // dataGridView1
             // 
@@ -87,7 +87,6 @@ namespace De2.GUI
             this.colTenSanPham,
             this.colGiaNhap,
             this.colNgayNhap,
-            this.colTinhTrang,
             this.colNCC,
             this.colTinh});
             this.dataGridView1.Location = new System.Drawing.Point(9, 32);
@@ -96,42 +95,6 @@ namespace De2.GUI
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(649, 306);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // colID
-            // 
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.Visible = false;
-            // 
-            // colTenSanPham
-            // 
-            this.colTenSanPham.HeaderText = "Tên sản phẩm";
-            this.colTenSanPham.Name = "colTenSanPham";
-            // 
-            // colGiaNhap
-            // 
-            this.colGiaNhap.HeaderText = "Giá nhập";
-            this.colGiaNhap.Name = "colGiaNhap";
-            // 
-            // colNgayNhap
-            // 
-            this.colNgayNhap.HeaderText = "Ngày nhập";
-            this.colNgayNhap.Name = "colNgayNhap";
-            // 
-            // colTinhTrang
-            // 
-            this.colTinhTrang.HeaderText = "Tình trạng";
-            this.colTinhTrang.Name = "colTinhTrang";
-            // 
-            // colNCC
-            // 
-            this.colNCC.HeaderText = "Nhà cung cấp";
-            this.colNCC.Name = "colNCC";
-            // 
-            // colTinh
-            // 
-            this.colTinh.HeaderText = "Tỉnh/TP";
-            this.colTinh.Name = "colTinh";
             // 
             // label2
             // 
@@ -216,6 +179,37 @@ namespace De2.GUI
             this.cbbNhaCungCap.Size = new System.Drawing.Size(121, 21);
             this.cbbNhaCungCap.TabIndex = 10;
             // 
+            // colID
+            // 
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.Visible = false;
+            // 
+            // colTenSanPham
+            // 
+            this.colTenSanPham.HeaderText = "Tên sản phẩm";
+            this.colTenSanPham.Name = "colTenSanPham";
+            // 
+            // colGiaNhap
+            // 
+            this.colGiaNhap.HeaderText = "Giá nhập";
+            this.colGiaNhap.Name = "colGiaNhap";
+            // 
+            // colNgayNhap
+            // 
+            this.colNgayNhap.HeaderText = "Ngày nhập";
+            this.colNgayNhap.Name = "colNgayNhap";
+            // 
+            // colNCC
+            // 
+            this.colNCC.HeaderText = "Nhà cung cấp";
+            this.colNCC.Name = "colNCC";
+            // 
+            // colTinh
+            // 
+            this.colTinh.HeaderText = "Tỉnh/TP";
+            this.colTinh.Name = "colTinh";
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,7 +253,6 @@ namespace De2.GUI
         private System.Windows.Forms.DataGridViewTextBoxColumn colTenSanPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGiaNhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgayNhap;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn colTinhTrang;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNCC;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTinh;
     }

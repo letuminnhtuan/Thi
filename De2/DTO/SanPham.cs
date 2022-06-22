@@ -13,7 +13,7 @@ namespace De2.DTO
         public float GiaNhap { get; set; }
         public int SoLuong { get; set; }
         public DateTime NgayNhapHang { get; set; }
-        public string MaThanhPho { get; set; }
         public int MaNCC { get; set; }
+        public string MaThanhPho { get; set; }
     }
 }
