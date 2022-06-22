@@ -29,7 +29,7 @@ namespace CodeFirst.GUI
                 string txtSearch = this.txtSearch.Text;
                 foreach (MA_NL i in BLL_QL.Instance.GetDSNguyenLieu(MaMonAn, txtSearch))
                 {
-                    this.dataGridView1.Rows.Add(i.TenNguyenLieu, i.SoLuong, i.DonViTinh, i.TinhTrang);
+                    this.dataGridView1.Rows.Add(i.MaNguyenLieu, i.TenNguyenLieu, i.SoLuong, i.DonViTinh, i.TinhTrang);
                 }
             }
         }
@@ -52,11 +52,13 @@ namespace CodeFirst.GUI
         {
             if(this.dataGridView1.SelectedRows.Count == 1)
             {
-                int MaMonAn = ((CBBItem)this.cbbMonAn.SelectedItem).Key;
-                string TenNguyenLieu = this.dataGridView1.SelectedRows[0].Cells["colTenNguyenLieu"].Value.ToString();
-                fDetail f = new fDetail(MaMonAn, TenNguyenLieu);
-                f.d = new fDetail.Del(LoadData);
-                f.Show();
+                string TenNguyenLieu = this.dataGridView1.SelectedRows[0].Cells["colID"].Value.ToString();
+                MessageBox.Show(TenNguyenLieu);
+                //int MaMonAn = ((CBBItem)this.cbbMonAn.SelectedItem).Key;
+                //string TenNguyenLieu = this.dataGridView1.SelectedRows[0].Cells["colTenNguyenLieu"].Value.ToString();
+                //fDetail f = new fDetail(MaMonAn, TenNguyenLieu);
+                //f.d = new fDetail.Del(LoadData);
+                //f.Show();
             }
         }
 
