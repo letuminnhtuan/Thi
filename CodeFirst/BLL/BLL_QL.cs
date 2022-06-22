@@ -41,17 +41,22 @@ namespace CodeFirst.BLL
         }
         public List<CBBItem> GetCBBNguyenLieu()
         {
-            var list = db._NguyenLieus.Select(p => p);
-            List<CBBItem> data = new List<CBBItem>();
-            foreach (tNguyenLieu i in list)
+            //var list = db._NguyenLieus.Select(p => p);
+            //List<CBBItem> data = new List<CBBItem>();
+            //foreach (tNguyenLieu i in list)
+            //{
+            //    data.Add(new CBBItem
+            //    {
+            //        Key = i.ID_NguyenLieu,
+            //        Value = i.Ten_NguyenLieu
+            //    });
+            //}
+            //return data;
+            return db._NguyenLieus.Select(p => new CBBItem
             {
-                data.Add(new CBBItem
-                {
-                    Key = i.ID_NguyenLieu,
-                    Value = i.Ten_NguyenLieu
-                });
-            }
-            return data;
+                Key = p.ID_NguyenLieu,
+                Value = p.Ten_NguyenLieu 
+            }).ToList();
         }
         public List<MA_NL> GetDSNguyenLieu(int ID_MonAn, string txtSearch)
         {
